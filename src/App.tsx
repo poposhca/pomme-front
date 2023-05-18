@@ -1,5 +1,6 @@
 import Container from '@mui/material/Container';
-import Header from './components/Header.jsx.tsx'
+import Header from './components/Header.tsx'
+import SingleAnswer from './components/SingleAnswer.tsx';
 
 function App() {
   return (
@@ -8,8 +9,7 @@ function App() {
             <Header />
         </Container>
         <Container maxWidth='md'>
-            <h1>Welcome to Pomme</h1>
-            <h2>WIP</h2>
+            <SingleAnswer />
         </Container>
     </>
   )

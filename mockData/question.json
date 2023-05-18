@@ -1,0 +1,17 @@
+{
+  "label": "What is the name of the fourth planet in the solar system?",
+  "options": [
+    {
+      "label": "earth",
+      "isCorrectAnswer": false
+    },
+    {
+      "label": "mars",
+      "isCorrectAnswer": true
+    },
+    {
+      "label": "pluto",
+      "isCorrectAnswer": false
+    }
+  ]
+}
