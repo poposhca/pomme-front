@@ -1,17 +1,42 @@
-{
-  "label": "What is the name of the fourth planet in the solar system?",
-  "options": [
-    {
-      "label": "earth",
-      "isCorrectAnswer": false
-    },
-    {
-      "label": "mars",
-      "isCorrectAnswer": true
-    },
-    {
-      "label": "pluto",
-      "isCorrectAnswer": false
+[
+  {
+    "type": "SingleAnswerQuestion",
+    "item": {
+      "label": "What is the name of the fourth planet in the solar system?",
+      "options": [
+        {
+          "label": "earth",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "mars",
+          "isCorrectAnswer": true
+        },
+        {
+          "label": "pluto",
+          "isCorrectAnswer": false
+        }
+      ]
     }
-  ]
-}
+  },
+  {
+    "type": "SingleAnswerQuestion",
+    "item": {
+      "label": "What is the name of the fifth planet in the solar system?",
+      "options": [
+        {
+          "label": "earth",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "jupiter",
+          "isCorrectAnswer": true
+        },
+        {
+          "label": "pluto",
+          "isCorrectAnswer": false
+        }
+      ]
+    }
+  }
+]
