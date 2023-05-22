@@ -1,10 +1,14 @@
 import IGetQuizData from "../models/IGetQuizData.ts";
 import MultipleOptionQuestion from "../models/MultipleOptionQuestion.ts";
-import question from '../../mockData/question.json';
+import QuizItems from "../models/QuizItem.ts";
+import questions from '../../mockData/question.json';
 
 const mockQuestionHandler: IGetQuizData = {
     getQuestion(): MultipleOptionQuestion {
-        return question as MultipleOptionQuestion;
+        return questions[1].item as MultipleOptionQuestion;
+    },
+    getQuiz(): QuizItems[] {
+        return questions;
     }
 }
 

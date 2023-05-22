@@ -1,6 +1,6 @@
 [
   {
-    "type": "SingleAnswerQuestion",
+    "type": "SINGLE_ANSWER",
     "item": {
       "label": "What is the name of the fourth planet in the solar system?",
       "options": [
@@ -20,20 +20,20 @@
     }
   },
   {
-    "type": "SingleAnswerQuestion",
+    "type": "MULTIPLE_ANSWER",
     "item": {
-      "label": "What is the name of the fifth planet in the solar system?",
+      "label": "Select the true statements",
       "options": [
         {
-          "label": "earth",
-          "isCorrectAnswer": false
-        },
-        {
-          "label": "jupiter",
+          "label": "true",
           "isCorrectAnswer": true
         },
         {
-          "label": "pluto",
+          "label": "true",
+          "isCorrectAnswer": true
+        },
+        {
+          "label": "false",
           "isCorrectAnswer": false
         }
       ]

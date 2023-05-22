@@ -1,8 +1,7 @@
 import MultipleOptionQuestion from "./MultipleOptionQuestion.ts";
-import QuizItemsTypes from "./QuizItemsTypes.ts";
 
 interface QuizItem {
-    type: QuizItemsTypes;
+    type: string;
     item: MultipleOptionQuestion;
 }
 
