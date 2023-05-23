@@ -34,7 +34,7 @@ const Quiz = () => {
                 <SingleAnswer question={question.item} />
             )}
             {question.type === QuizItemsTypes.MultipleAnswer && (
-                <h1>To implement</h1>ß
+                <h1>To implement</h1>
             )}
             <Button variant="outlined" onClick={setPreviewsQuestion}>Back</Button>
             <Button variant="outlined" onClick={setNextQuestion}>Next</Button>
