@@ -1,22 +1,23 @@
 import IQuizIterator from "../models/IQuizIterator.ts";
-import Option from "../models/Option.ts";
+import QuizItem from "../models/QuizItem.ts";
 
-const QuizIterator = (options: Option[]): IQuizIterator => {
+const quizIterator = (items: QuizItem[]): IQuizIterator => {
     let actualIndex = 0;
     return ({
         goTo: (index: number) => {
             actualIndex = index;
-            return options[actualIndex];
+            return items[actualIndex];
         },
+        currentQuestion: () => items[actualIndex],
         previous: () => {
             actualIndex--;
-            return options[actualIndex];
+            return items[actualIndex];
         },
         next: () => {
             actualIndex++;
-            return options[actualIndex];
+            return items[actualIndex];
         }
     });
 }
 
-export default QuizIterator;
+export default quizIterator;

@@ -1,9 +1,10 @@
-import Option from "./Option.ts";
+import QuizItem from "./QuizItem.ts";
 
 interface IQuizIterator {
-    goTo: (index: number) => Option;
-    previous: () => Option;
-    next: () => Option;
+    goTo: (index: number) => QuizItem;
+    currentQuestion: () => QuizItem;
+    previous: () => QuizItem;
+    next: () => QuizItem;
 }
 
 export default IQuizIterator;

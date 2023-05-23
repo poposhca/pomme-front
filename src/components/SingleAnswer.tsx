@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -6,18 +6,15 @@ import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
-import handlers from '../handlers/index.ts';
 import MultipleOptionQuestion from "../models/MultipleOptionQuestion.ts";
 
-const SingleAnswer = () => {
-    const [question, setQuestion] = useState({ label: '', options: [] } as MultipleOptionQuestion);
+type SingleAnswerProps = {
+    question: MultipleOptionQuestion;
+}
+
+const SingleAnswer = ({ question }: SingleAnswerProps) => {
     const [answer, setAnswer] = useState(0);
     const [helperText, setHelperText] = useState('Choose wisely');
-
-    useEffect(() => {
-        const question = handlers.questionHandler.getQuestion();
-        setQuestion(question);
-    }, []);
 
     const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
         const newAnswer = Number((event.target as HTMLInputElement).value);
