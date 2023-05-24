@@ -6,6 +6,7 @@ import QuizItem from "../models/QuizItem.ts";
 import IQuizIterator from "../models/IQuizIterator.ts";
 import handlers from "../handlers";
 import SingleAnswer from "./SingleAnswer.tsx";
+import MultipleAnswer from "./MultipleAnswer.tsx";
 
 const Quiz = () => {
     const [quiz, setQuiz] = useState({currentQuestion: () => ({ type: 'empty' })} as IQuizIterator);
@@ -34,7 +35,7 @@ const Quiz = () => {
                 <SingleAnswer question={question.item} />
             )}
             {question.type === QuizItemsTypes.MultipleAnswer && (
-                <h1>To implement</h1>
+                <MultipleAnswer question={question.item} />
             )}
             <Button variant="outlined" onClick={setPreviewsQuestion}>Back</Button>
             <Button variant="outlined" onClick={setNextQuestion}>Next</Button>

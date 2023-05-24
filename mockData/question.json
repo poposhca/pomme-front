@@ -25,11 +25,11 @@
       "label": "Select the true statements",
       "options": [
         {
-          "label": "true",
+          "label": "true1",
           "isCorrectAnswer": true
         },
         {
-          "label": "true",
+          "label": "true2",
           "isCorrectAnswer": true
         },
         {
