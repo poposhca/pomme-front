@@ -7,7 +7,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
-import MultipleOptionQuestion from "../models/MultipleOptionQuestion";
+import MultipleOptionQuestion from "../../models/MultipleOptionQuestion.ts";
 
 interface Props {
     question: MultipleOptionQuestion;

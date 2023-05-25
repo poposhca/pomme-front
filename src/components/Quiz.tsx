@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import quizIterator from "../utils/QuizIterator.ts";
-import QuizItemsTypes from "../models/QuizItemsTypes.ts";
+// import QuizItemsTypes from "../models/QuizItemsTypes.ts";
 import QuizItem from "../models/QuizItem.ts";
 import IQuizIterator from "../models/IQuizIterator.ts";
 import handlers from "../handlers";
-import SingleAnswer from "./SingleAnswer.tsx";
-import MultipleAnswer from "./MultipleAnswer.tsx";
+// import SingleAnswer from "./User/SingleAnswer.tsx";
+// import MultipleAnswer from "./User/MultipleAnswer.tsx";
+import MultipleOptionResults from "./Admin/MultipleOptionResults.tsx";
 
 const Quiz = () => {
     const [quiz, setQuiz] = useState({currentQuestion: () => ({ type: 'empty' })} as IQuizIterator);
@@ -31,12 +32,14 @@ const Quiz = () => {
 
     return (
         <>
-            {question.type === QuizItemsTypes.SingleAnswer && (
+            {/* TODO: Implement rol difference */}
+            {/*{question.type === QuizItemsTypes.SingleAnswer && (
                 <SingleAnswer question={question.item} />
             )}
             {question.type === QuizItemsTypes.MultipleAnswer && (
                 <MultipleAnswer question={question.item} />
-            )}
+            )}*/}
+            <MultipleOptionResults question={question.item} />
             <Button variant="outlined" onClick={setPreviewsQuestion}>Back</Button>
             <Button variant="outlined" onClick={setNextQuestion}>Next</Button>
         </>

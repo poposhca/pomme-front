@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
-import MultipleOptionQuestion from "../models/MultipleOptionQuestion.ts";
+import MultipleOptionQuestion from "../../models/MultipleOptionQuestion.ts";
 
 type SingleAnswerProps = {
     question: MultipleOptionQuestion;
