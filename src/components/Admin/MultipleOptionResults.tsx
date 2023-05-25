@@ -22,9 +22,12 @@ interface Props {
      return (
          <>
              {answers ? (
-                 <VictoryChart domainPadding={30}>
-                     <VictoryBar data={answers} x="label" y="count" />
-                 </VictoryChart>
+                 <>
+                     <h1>{question.label}</h1>
+                     <VictoryChart domainPadding={30}>
+                         <VictoryBar data={answers} x="label" y="count" />
+                     </VictoryChart>
+                 </>
              ): (
                  <h1>LOADING</h1>
              )}
