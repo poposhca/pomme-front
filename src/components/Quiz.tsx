@@ -8,8 +8,10 @@ import handlers from "../handlers";
 // import SingleAnswer from "./User/SingleAnswer.tsx";
 // import MultipleAnswer from "./User/MultipleAnswer.tsx";
 import MultipleOptionResults from "./Admin/MultipleOptionResults.tsx";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Quiz = () => {
+    const { user } = useAuth0();
     const [quiz, setQuiz] = useState({currentQuestion: () => ({ type: 'empty' })} as IQuizIterator);
     const [question, setQuestion] = useState({} as QuizItem);
 
@@ -42,6 +44,7 @@ const Quiz = () => {
             <MultipleOptionResults question={question.item} />
             <Button variant="outlined" onClick={setPreviewsQuestion}>Back</Button>
             <Button variant="outlined" onClick={setNextQuestion}>Next</Button>
+            {console.log(user)}
         </>
     );
 };
