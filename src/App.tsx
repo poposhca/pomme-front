@@ -2,11 +2,11 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-import Container from '@mui/material/Container';
 import { Auth0Provider } from "@auth0/auth0-react";
 import Header from './components/Header.tsx'
 import Quiz from "./components/Quiz.tsx";
-import LogIn from "./components/LogIn.tsx";
+import LogIn from "./views/Login";
+import AppLayout from "./views/AppLayout";
 
 const router = createBrowserRouter([
     {
@@ -15,15 +15,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/quiz",
-        element:
-            <>
-                <Container disableGutters>
-                    <Header />
-                </Container>
-                <Container maxWidth='md'>
-                    <Quiz />
-                </Container>
-            </>,
+        element: <AppLayout />,
     }
 ]);
 
