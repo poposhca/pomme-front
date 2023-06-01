@@ -1,11 +1,15 @@
 import Container from "@mui/material/Container";
 import Header from "../../components/Header.tsx";
 
-const AppLayout = () => (
+type Props = {
+    Component: any;
+};
+
+const AppLayout = ({ Component }: Props) => (
     <>
         <Header />
         <Container maxWidth="lg">
-            <h1>POMME</h1>
+            <Component />
         </Container>
     </>
 );

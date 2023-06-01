@@ -3,7 +3,6 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
-import Header from './components/Header.tsx'
 import Quiz from "./components/Quiz.tsx";
 import LogIn from "./views/Login";
 import AppLayout from "./views/AppLayout";
@@ -15,7 +14,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/quiz",
-        element: <AppLayout />,
+        element: <AppLayout Component={Quiz} />,
     }
 ]);
 

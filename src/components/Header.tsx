@@ -5,8 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from "@mui/material/Button";
 
 const Header = () => {
-    const { logout, user, isAuthenticated, context } = useAuth0();
-    console.log(user?.sub);
+    const { logout, user } = useAuth0();
 
     return (
         <Box sx={{ flexGrow: 1 }}>
