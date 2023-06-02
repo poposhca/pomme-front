@@ -1,5 +1,14 @@
 [
   {
+    "type": "QUIZSTART"
+  },
+  {
+    "type": "PRESENTATION",
+    "item": {
+      "url": "public/testSlides/Untitled presentation.jpg"
+    }
+  },
+  {
     "type": "SINGLE_ANSWER",
     "item": {
       "label": "What is the name of the fourth planet in the solar system?",

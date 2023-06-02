@@ -5,11 +5,14 @@ import quizIterator from "../utils/QuizIterator.ts";
 import QuizItemsTypes from "../models/QuizItemsTypes.ts";
 import QuizItem from "../models/QuizItem.ts";
 import IQuizIterator from "../models/IQuizIterator.ts";
+import MultipleOptionQuestion from "../models/MultipleOptionQuestion.ts";
+import PresentationSlide from "../models/PresentationSlide.ts";
 import handlers from "../handlers";
 import SingleAnswer from "./User/SingleAnswer.tsx";
 import MultipleAnswer from "./User/MultipleAnswer.tsx";
+import Presentation from "./Presentation.tsx";
 import MultipleOptionResults from "./Admin/MultipleOptionResults.tsx";
-
+import QuizStart from "./User/QuizStart.tsx";
 
 const Quiz = () => {
     const [quiz, setQuiz] = useState({currentQuestion: () => ({ type: 'empty' })} as IQuizIterator);
@@ -33,24 +36,48 @@ const Quiz = () => {
         setQuestion(prevQuestion);
     }
 
-    return (
-        <>
-            {user?.role === 'admin' ? (
-                <MultipleOptionResults question={question.item} />
-            ): (
+    // Select body to render
+    let BodyComponent = <h1>Nothing Here 👀</h1>;
+    switch (question.type) {
+        case QuizItemsTypes.QUIZSTART:
+            BodyComponent = (<QuizStart />);
+            break;
+        case QuizItemsTypes.Presentation:
+            BodyComponent = (
+                <Presentation presentationItem={question.item as PresentationSlide} />
+            );
+            break;
+        case QuizItemsTypes.SingleAnswer:
+        case QuizItemsTypes.MultipleAnswer:
+            BodyComponent = (
                 <>
-                    {question.type === QuizItemsTypes.SingleAnswer && (
-                        <SingleAnswer question={question.item} />
-                    )}
-                    {question.type === QuizItemsTypes.MultipleAnswer && (
-                        <MultipleAnswer question={question.item} />
+                    {user?.role === 'admin' ? (
+                        <MultipleOptionResults question={question.item as MultipleOptionQuestion} />
+                    ): (
+                        <>
+                            {question.type === QuizItemsTypes.SingleAnswer && (
+                                <SingleAnswer question={question.item as MultipleOptionQuestion} />
+                            )}
+                            {question.type === QuizItemsTypes.MultipleAnswer && (
+                                <MultipleAnswer question={question.item as MultipleOptionQuestion} />
+                            )}
+                        </>
                     )}
                 </>
-            )}
+            );
+            break;
+    }
+
+    // Render
+    return (
+        <>
+            {BodyComponent}
             <Button variant="outlined" onClick={setPreviewsQuestion}>Back</Button>
             <Button variant="outlined" onClick={setNextQuestion}>Next</Button>
         </>
     );
+
+
 };
 
 export default Quiz;
