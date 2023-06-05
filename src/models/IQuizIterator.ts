@@ -5,6 +5,8 @@ interface IQuizIterator {
     currentQuestion: () => QuizItem;
     previous: () => QuizItem;
     next: () => QuizItem;
+    getCurrent: () => number;
+    getLength: () => number;
 }
 
 export default IQuizIterator;

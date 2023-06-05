@@ -15,13 +15,19 @@ import MultipleOptionResults from "./Admin/MultipleOptionResults.tsx";
 import QuizStart from "./User/QuizStart.tsx";
 
 const Quiz = () => {
-    const [quiz, setQuiz] = useState({currentQuestion: () => ({ type: 'empty' })} as IQuizIterator);
+    const [quiz, setQuiz] = useState(
+        {
+            getCurrent: () => 0,
+            getLength: () => 0,
+            currentQuestion: () => ({ type: 'empty' })
+        } as IQuizIterator);
     const [question, setQuestion] = useState({} as QuizItem);
     const { user } = useAuth0();
 
     useEffect(() => {
         const newQuiz = handlers.questionHandler.getQuiz();
         const newIterator = quizIterator(newQuiz)
+        console.log(newIterator.getLength());
         setQuiz(newIterator);
         setQuestion(newIterator.currentQuestion());
     }, []);
@@ -53,6 +59,7 @@ const Quiz = () => {
                 <>
                     {user?.role === 'admin' ? (
                         <MultipleOptionResults question={question.item as MultipleOptionQuestion} />
+
                     ): (
                         <>
                             {question.type === QuizItemsTypes.SingleAnswer && (
@@ -72,8 +79,16 @@ const Quiz = () => {
     return (
         <>
             {BodyComponent}
-            <Button variant="outlined" onClick={setPreviewsQuestion}>Back</Button>
-            <Button variant="outlined" onClick={setNextQuestion}>Next</Button>
+            {user?.role === 'admin' && (
+                <>
+                    {quiz.getCurrent() !== 0 && (
+                        <Button variant="outlined" onClick={setPreviewsQuestion}>Back</Button>
+                    )}
+                    {quiz.getCurrent() !== quiz.getLength() - 1 && (
+                        <Button variant="outlined" onClick={setNextQuestion}>Next</Button>
+                    )}
+                </>
+            )}
         </>
     );
 
