@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
-import {useAuth0} from "@auth0/auth0-react";
+import { useUserProfile } from '../utils/useUserProfile.ts';
 import quizIterator from "../utils/QuizIterator.ts";
 import QuizItemsTypes from "../models/QuizItemsTypes.ts";
 import QuizItem from "../models/QuizItem.ts";
@@ -22,12 +22,11 @@ const Quiz = () => {
             currentQuestion: () => ({ type: 'empty' })
         } as IQuizIterator);
     const [question, setQuestion] = useState({} as QuizItem);
-    const { user } = useAuth0();
+    const user = useUserProfile();
 
     useEffect(() => {
         const newQuiz = handlers.questionHandler.getQuiz();
-        const newIterator = quizIterator(newQuiz)
-        console.log(newIterator.getLength());
+        const newIterator = quizIterator(newQuiz);
         setQuiz(newIterator);
         setQuestion(newIterator.currentQuestion());
     }, []);
