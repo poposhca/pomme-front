@@ -25,10 +25,13 @@ const Quiz = () => {
     const user = useUserProfile();
 
     useEffect(() => {
+        // Get quiz from server
         const newQuiz = handlers.questionHandler.getQuiz();
         const newIterator = quizIterator(newQuiz);
         setQuiz(newIterator);
         setQuestion(newIterator.currentQuestion());
+        // Connect to socket server
+
     }, []);
 
     const setNextQuestion = () => {
