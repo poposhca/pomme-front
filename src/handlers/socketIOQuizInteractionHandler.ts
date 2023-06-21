@@ -1,4 +1,39 @@
 import { io } from 'socket.io-client';
-const socketIOQuizInteractionHandler = () => {
-    const socket = io();
+import IQuizInteractionHandler, { IQuizInteractionHandlerParameters } from "../models/IQuizInteractionHandler.ts";
+import QuizHandlerEvents from "../models/QuizHandlerEvents.ts";
+const socketIOQuizInteractionHandler = ({userId, quizId}: IQuizInteractionHandlerParameters) => {
+    const socket = io("localhost:3000", {
+        extraHeaders: {
+            Authorization: userId
+        }
+    });
+
+    socket.on(QuizHandlerEvents.connection, () => {
+        console.log("connected to pomme server");
+    });
+
+    return {
+        joinQuiz: (adminId: string) => {
+            socket.emit(QuizHandlerEvents.joinQuiz, {
+                quizId,
+                adminId,
+            })
+        },
+        sendAnswer: (answer: string) => {
+            console.log(answer);
+        },
+        setGetQuizPositionEvent: (eventFunc: (position: number) => void) => {
+            socket.on(QuizHandlerEvents.sendQuizPosition, (newPosition: number) => {
+                eventFunc(newPosition);
+            })
+        },
+        setQuizPosition: (position: number) => {
+            socket.emit(QuizHandlerEvents.setQuizPosition, {
+                quizId,
+                position,
+            })
+        }
+    } as IQuizInteractionHandler;
 }
+
+export default socketIOQuizInteractionHandler;

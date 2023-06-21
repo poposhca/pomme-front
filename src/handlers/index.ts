@@ -1,15 +1,16 @@
 import mockQuestionHandler from "./mockQuestionHandler.ts";
 import IGetQuizData from "../models/IGetQuizData.ts";
-import IQuizInteractionHandler from "../models/IQuizInteractionHandler.ts";
+import IQuizInteractionHandler, {IQuizInteractionHandlerParameters} from "../models/IQuizInteractionHandler.ts";
+import socketIOQuizInteractionHandler from "./socketIOQuizInteractionHandler.ts";
 
 interface IHandlers {
     questionHandler: IGetQuizData;
-    quizInteractionHandler: IQuizInteractionHandler;
+    quizInteractionHandler: ({userId, quizId}:IQuizInteractionHandlerParameters ) => IQuizInteractionHandler;
 }
 
 const handlers: IHandlers = {
-   questionHandler: mockQuestionHandler,
-    quizInteractionHandler: {},
+    questionHandler: mockQuestionHandler,
+    quizInteractionHandler: socketIOQuizInteractionHandler,
 };
 
 export default handlers;

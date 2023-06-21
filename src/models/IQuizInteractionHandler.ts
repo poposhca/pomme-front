@@ -1,7 +1,13 @@
 interface IQuizInteractionHandler {
-    connectToServer: () => void;
+    joinQuiz: (adminId: string) => void;
     sendAnswer: (answer: string) => void;
-    getQuizPosition: () => number;
+    setGetQuizPositionEvent: (eventFunc: (position: number) => void) => void;
+    setQuizPosition: (position: number) => void;
+}
+
+export type IQuizInteractionHandlerParameters = {
+    userId: string;
+    quizId: string;
 }
 
 export default IQuizInteractionHandler;

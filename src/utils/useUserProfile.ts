@@ -9,7 +9,13 @@ export const useUserProfile = () : User | undefined => {
     useEffect(() => {
         if (user) {
             const { name, lastname, email, role } = user;
-            setUserProfile({ name: name || '', lastname: lastname || '', email: email || '', role });
+            setUserProfile({
+                name: name || '',
+                lastname: lastname || '',
+                email: email || '',
+                role,
+                id: role === 'admin' ? '123' : '111',
+            });
         }
     }, [user]);
 

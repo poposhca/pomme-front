@@ -23,6 +23,24 @@ const Quiz = () => {
         } as IQuizIterator);
     const [question, setQuestion] = useState({} as QuizItem);
     const user = useUserProfile();
+    const [serverHandler, setServerHandler] = useState({} as any);
+
+    const setNextQuestion = () => {
+        const nextQuestion = quiz.next();
+        setQuestion(nextQuestion);
+        serverHandler.setQuizPosition(quiz.getCurrent());
+    };
+
+    const setPreviewsQuestion = () => {
+        const prevQuestion = quiz.previous();
+        setQuestion(prevQuestion);
+        serverHandler.setQuizPosition(quiz.getCurrent());
+    }
+
+    const getQuizPosition = (position: number) => {
+        const actualQuestion = quiz.goTo(position);
+        setQuestion(actualQuestion);
+    }
 
     useEffect(() => {
         // Get quiz from server
@@ -30,19 +48,21 @@ const Quiz = () => {
         const newIterator = quizIterator(newQuiz);
         setQuiz(newIterator);
         setQuestion(newIterator.currentQuestion());
-        // Connect to socket server
-
     }, []);
 
-    const setNextQuestion = () => {
-        const nextQuestion = quiz.next();
-        setQuestion(nextQuestion);
-    };
+    // Connect to server when user is defined
+    useEffect(() => {
+        if(user) {
+            const newServerHandler = handlers.quizInteractionHandler({
+                userId: user?.id || '000',
+                quizId: '01',
+            });
+            newServerHandler.joinQuiz('123');
+            newServerHandler.setGetQuizPositionEvent(getQuizPosition)
+            setServerHandler(newServerHandler);
+        }
+    }, [user]);
 
-    const setPreviewsQuestion = () => {
-        const prevQuestion = quiz.previous();
-        setQuestion(prevQuestion);
-    }
 
     // Select body to render
     let BodyComponent = <h1>Nothing Here 👀</h1>;
@@ -77,7 +97,6 @@ const Quiz = () => {
             break;
     }
 
-    // Render
     return (
         <>
             {BodyComponent}

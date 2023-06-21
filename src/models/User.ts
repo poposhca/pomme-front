@@ -3,6 +3,7 @@ type User = {
     lastname: string;
     email: string;
     role: string;
+    id: string;
 }
 
 export default User;
