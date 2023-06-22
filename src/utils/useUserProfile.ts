@@ -14,7 +14,7 @@ export const useUserProfile = () : User | undefined => {
                 lastname: lastname || '',
                 email: email || '',
                 role,
-                id: role === 'admin' ? '123' : '111',
+                id: user.sub || '',
             });
         }
     }, [user]);

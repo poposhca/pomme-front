@@ -63,6 +63,7 @@ const Quiz = () => {
         }
     }, [user]);
 
+    console.log(user);
 
     // Select body to render
     let BodyComponent = <h1>Nothing Here 👀</h1>;
