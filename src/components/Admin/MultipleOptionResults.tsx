@@ -13,7 +13,7 @@ interface Props {
         const answers = question?.options?.map((option) => {
             return {
                 label: option.label,
-                count: 3,
+                count: 0,
             };
         });
         setAnswers(answers as any);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
-import { useUserProfile } from '../utils/useUserProfile.ts';
+import { useUserProfile } from './useUserProfile.ts';
 import quizIterator from "../utils/QuizIterator.ts";
 import QuizItemsTypes from "../models/QuizItemsTypes.ts";
 import QuizItem from "../models/QuizItem.ts";

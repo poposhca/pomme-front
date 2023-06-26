@@ -22,6 +22,11 @@ const socketIOQuizInteractionHandler = ({userId, quizId}: IQuizInteractionHandle
         sendAnswer: (answer: string) => {
             console.log(answer);
         },
+        receiveAnswer: (eventFunc: (answer: number) => void) => {
+            socket.on(QuizHandlerEvents.receiveAnswer, (answer: number) => {
+                eventFunc(answer);
+            })
+        },
         setGetQuizPositionEvent: (eventFunc: (position: number) => void) => {
             socket.on(QuizHandlerEvents.sendQuizPosition, (newPosition: number) => {
                 eventFunc(newPosition);
