@@ -53,6 +53,7 @@ const Quiz = () => {
     // Connect to server when user is defined
     useEffect(() => {
         if(user) {
+            // TODO: Un-hardcode Quiz ID and Admin ID to implement different quizzes
             const newServerHandler = handlers.quizInteractionHandler({
                 userId: user?.id || '000',
                 quizId: '01',
@@ -86,10 +87,16 @@ const Quiz = () => {
                     ): (
                         <>
                             {question.type === QuizItemsTypes.SingleAnswer && (
-                                <SingleAnswer question={question.item as MultipleOptionQuestion} />
+                                <SingleAnswer
+                                    question={question.item as MultipleOptionQuestion}
+                                    quizInteractionHandler={serverHandler}
+                                />
                             )}
                             {question.type === QuizItemsTypes.MultipleAnswer && (
-                                <MultipleAnswer question={question.item as MultipleOptionQuestion} />
+                                <MultipleAnswer
+                                    question={question.item as MultipleOptionQuestion}
+                                    quizInteractionHandler={serverHandler}
+                                />
                             )}
                         </>
                     )}

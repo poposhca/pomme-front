@@ -1,5 +1,6 @@
 import { io } from 'socket.io-client';
 import IQuizInteractionHandler, { IQuizInteractionHandlerParameters } from "../models/IQuizInteractionHandler.ts";
+import { ReceiveAnswerMessage, SendAnswersMessage } from "../models/Messages.ts";
 import QuizHandlerEvents from "../models/QuizHandlerEvents.ts";
 const socketIOQuizInteractionHandler = ({userId, quizId}: IQuizInteractionHandlerParameters) => {
     const socket = io("localhost:3000", {
@@ -19,11 +20,16 @@ const socketIOQuizInteractionHandler = ({userId, quizId}: IQuizInteractionHandle
                 adminId,
             })
         },
-        sendAnswer: (answer: string) => {
-            console.log(answer);
+        sendAnswer: (answers: number[], adminId: string) => {
+            const message: SendAnswersMessage = {
+                quizId,
+                adminId,
+                answers,
+            };
+            socket.emit(QuizHandlerEvents.sendAnswers, message);
         },
-        receiveAnswer: (eventFunc: (answer: number) => void) => {
-            socket.on(QuizHandlerEvents.receiveAnswer, (answer: number) => {
+        receiveAnswer: (eventFunc: (answer: ReceiveAnswerMessage) => void) => {
+            socket.on(QuizHandlerEvents.receiveAnswer, (answer: ReceiveAnswerMessage) => {
                 eventFunc(answer);
             })
         },

@@ -8,16 +8,18 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
 import MultipleOptionQuestion from "../../models/MultipleOptionQuestion.ts";
+import IQuizInteractionHandler from "../../models/IQuizInteractionHandler.ts";
 
 interface Props {
     question: MultipleOptionQuestion;
+    quizInteractionHandler: IQuizInteractionHandler;
 }
 
 interface Answers {
     [key: string]: boolean;
 }
 
-const MultipleAnswer = ({ question }: Props) => {
+const MultipleAnswer = ({ question, quizInteractionHandler }: Props) => {
     const [answers, setAnswers] = useState(
         question.options.reduce((current, option) => ({ ...current, [option.label]: false } as Answers), {} as Answers)
     );
@@ -32,8 +34,17 @@ const MultipleAnswer = ({ question }: Props) => {
     }
 
     const handleSubmit = () => {
+        let index = 0;
+        const message: number[] = [];
+        for (const key in answers) {
+            if (answers[key]) {
+                message.push(index);
+            }
+            index++;
+        }
+        quizInteractionHandler.sendAnswer(message, '123');
         const result = question.options.every((option) => option.isCorrectAnswer === answers[option.label]);
-        if(result) {
+        if (result) {
             setHelperText('You got it!');
         } else {
             setHelperText('Sorry, wrong answer!');

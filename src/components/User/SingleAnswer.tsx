@@ -7,12 +7,14 @@ import FormHelperText from '@mui/material/FormHelperText';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import MultipleOptionQuestion from "../../models/MultipleOptionQuestion.ts";
+import IQuizInteractionHandler from "../../models/IQuizInteractionHandler.ts"
 
-type SingleAnswerProps = {
+type Props = {
     question: MultipleOptionQuestion;
+    quizInteractionHandler: IQuizInteractionHandler;
 }
 
-const SingleAnswer = ({ question }: SingleAnswerProps) => {
+const SingleAnswer = ({ question, quizInteractionHandler }: Props) => {
     const [answer, setAnswer] = useState(0);
     const [helperText, setHelperText] = useState('Choose wisely');
 
@@ -23,6 +25,7 @@ const SingleAnswer = ({ question }: SingleAnswerProps) => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        quizInteractionHandler.sendAnswer([answer], '123');
         const result = question.options[answer];
         if(result.isCorrectAnswer) {
             setHelperText('You got it!');
