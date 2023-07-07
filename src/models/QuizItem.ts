@@ -1,7 +1,7 @@
 import MultipleOptionQuestion from "./MultipleOptionQuestion.ts";
 import PresentationSlide from "./PresentationSlide.ts";
 
-interface QuizItem {
+type QuizItem = {
     type: string;
     item: MultipleOptionQuestion | PresentationSlide;
 }

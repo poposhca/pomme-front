@@ -22,7 +22,9 @@ const Quiz = () => {
             currentQuestion: () => ({ type: 'empty' })
         } as IQuizIterator);
     const [question, setQuestion] = useState({} as QuizItem);
+    const [quizAdminId, setQuizAdminId] = useState('');
     const user = useUserProfile();
+    // TODO: remove any
     const [serverHandler, setServerHandler] = useState({} as any);
 
     const setNextQuestion = () => {
@@ -48,17 +50,18 @@ const Quiz = () => {
         const newIterator = quizIterator(newQuiz);
         setQuiz(newIterator);
         setQuestion(newIterator.currentQuestion());
+        setQuizAdminId(handlers.questionHandler.getQuizAdminId());
     }, []);
 
     // Connect to server when user is defined
     useEffect(() => {
         if(user) {
-            // TODO: Un-hardcode Quiz ID and Admin ID to implement different quizzes
+            // TODO: Un-hardcode Quiz ID to implement different quizzes
             const newServerHandler = handlers.quizInteractionHandler({
                 userId: user?.id || '000',
                 quizId: '01',
             });
-            newServerHandler.joinQuiz('123');
+            newServerHandler.joinQuiz(quizAdminId);
             newServerHandler.setGetQuizPositionEvent(getQuizPosition)
             setServerHandler(newServerHandler);
         }
@@ -82,7 +85,10 @@ const Quiz = () => {
             BodyComponent = (
                 <>
                     {user?.role === 'admin' ? (
-                        <MultipleOptionResults question={question.item as MultipleOptionQuestion} />
+                        <MultipleOptionResults
+                            question={question.item as MultipleOptionQuestion}
+                            quizInteractionHandler={serverHandler}
+                        />
 
                     ): (
                         <>
