@@ -1,0 +1,2 @@
+export const LOGIN_REDIRECT_URL =  import.meta.env.VITE_LOGIN_REDIRECT_URL || 'http://localhost:5173/quiz';
+export const QUIZ_HANDLER_URL = import.meta.env.VITE_QUIZ_HANDLER_URL || 'http://localhost:3000';

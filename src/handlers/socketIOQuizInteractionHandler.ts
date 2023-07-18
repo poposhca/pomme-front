@@ -2,9 +2,11 @@ import { io } from 'socket.io-client';
 import IQuizInteractionHandler, { IQuizInteractionHandlerParameters } from "../models/IQuizInteractionHandler.ts";
 import { ReceiveAnswerMessage, SendAnswersMessage } from "../models/Messages.ts";
 import QuizHandlerEvents from "../models/QuizHandlerEvents.ts";
+import { QUIZ_HANDLER_URL } from "../config.ts";
+
 const socketIOQuizInteractionHandler = ({userId, quizId}: IQuizInteractionHandlerParameters) => {
     // TDODO: refactor url hardcode
-    const url = "http://orca-app-vkjxg.ondigitalocean.app:8080/pomme-socket-server2";
+    const url = QUIZ_HANDLER_URL;
     const socket = io(url, {
         extraHeaders: {
             Authorization: userId
