@@ -1,0 +1,167 @@
+[
+  {
+    "type": "QUIZSTART"
+  },
+  {
+    "type": "PRESENTATION",
+    "item": {
+      "url": "public/testSlides/Untitled presentation.jpg"
+    }
+  },
+  {
+    "type": "SINGLE_ANSWER",
+    "item": {
+      "label": "Sabes que significan todas las siglas de SOLID??",
+      "options": [
+        {
+          "label": "si",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "no",
+          "isCorrectAnswer": false
+        }
+      ]
+    }
+  },
+  {
+    "type": "SINGLE_ANSWER",
+    "item": {
+      "label": "Qué significa la S de SOLID?",
+      "options": [
+        {
+          "label": "Single Responsibility Principle",
+          "isCorrectAnswer": true
+        },
+        {
+          "label": "Simple performance principle",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "Singleton Pattern Principle",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "Singularization Principle",
+          "isCorrectAnswer": false
+        }
+      ]
+    }
+  },
+  {
+    "type": "SINGLE_ANSWER",
+    "item": {
+      "label": "Qué significa la O de SOLID?",
+      "options": [
+        {
+          "label": "Object Oriented Principle",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "Open Closed Principle",
+          "isCorrectAnswer": true
+        },
+        {
+          "label": "Orientation Principle",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "Ohhhh my God",
+          "isCorrectAnswer": false
+        }
+      ]
+    }
+  },
+  {
+    "type": "SINGLE_ANSWER",
+    "item": {
+      "label": "Qué significa la L de SOLID?",
+      "options": [
+        {
+          "label": "Liskov Substitution Principle",
+          "isCorrectAnswer": true
+        },
+        {
+          "label": "Linear Implementation Principle",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "Liskov Implementation Principle",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "Linter Replacement Principle",
+          "isCorrectAnswer": false
+        }
+      ]
+    }
+  },
+  {
+    "type": "SINGLE_ANSWER",
+    "item": {
+      "label": "Qué significa la I de SOLID?",
+      "options": [
+        {
+          "label": "Interface Implementation Principle",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "Inference Segregation Principle",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "Interface Segregation Principle",
+          "isCorrectAnswer": true
+        },
+        {
+          "label": "Interface Substitution Principle",
+          "isCorrectAnswer": false
+        }
+      ]
+    }
+  },
+  {
+    "type": "SINGLE_ANSWER",
+    "item": {
+      "label": "Qué significa la D de SOLID?",
+      "options": [
+        {
+          "label": "Digital Segregation Principle",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "Dependency Implementation Principle",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "Dog Principle",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "Dependency Inversion Principle",
+          "isCorrectAnswer": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "MULTIPLE_ANSWER",
+    "item": {
+      "label": "Select the true statements",
+      "options": [
+        {
+          "label": "true1",
+          "isCorrectAnswer": true
+        },
+        {
+          "label": "true2",
+          "isCorrectAnswer": true
+        },
+        {
+          "label": "false",
+          "isCorrectAnswer": false
+        }
+      ]
+    }
+  }
+]
