@@ -9,6 +9,12 @@
     }
   },
   {
+    "type": "PRESENTATION",
+    "item": {
+      "url": "solid/1.jpeg"
+    }
+  },
+  {
     "type": "SINGLE_ANSWER",
     "item": {
       "label": "What is the name of the fourth planet in the solar system?",
