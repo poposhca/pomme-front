@@ -1,6 +1,6 @@
 import IGetQuizData from "../models/IGetQuizData.ts";
 import MultipleOptionQuestion from "../models/MultipleOptionQuestion.ts";
-import questions from '../../mockData/question.json';
+import questions from '../../mockData/salid.json';
 import QuizItems from "../models/QuizItem.ts";
 
 const mockQuestionHandler: IGetQuizData = {
