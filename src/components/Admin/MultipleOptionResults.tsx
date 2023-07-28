@@ -23,9 +23,9 @@ interface Props {
 
     useEffect(() => {
         if (question === undefined) return;
-        const newAnswersStatistics = question.options?.map((option) => {
+        const newAnswersStatistics = question.options?.map((_, index) => {
             return {
-                label: option.label,
+                label: index,
                 count: 0,
             };
         });
@@ -35,9 +35,9 @@ interface Props {
 
     useEffect(() => {
         if (question === undefined) return;
-        const newAnswersStatistics = question.options?.map((option) => {
+        const newAnswersStatistics = question.options?.map((_, index) => {
             return {
-                label: option.label,
+                label: index,
                 count: 0,
             };
         });
@@ -49,8 +49,8 @@ interface Props {
         setAnswersStatistics(newAnswersStatistics);
     }, [answersMessages]);
 
-    console.log(answersStatistics);
-    console.log(answersMessages);
+    // console.log(answersStatistics);
+    // console.log(answersMessages);
      return (
          <>
              {answersStatistics ? (
