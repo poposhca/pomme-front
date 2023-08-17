@@ -3,9 +3,6 @@
     "type": "QUIZSTART"
   },
   {
-    "type": "QUIZSTART"
-  },
-  {
     "type": "PRESENTATION",
     "item": {
       "url": "solid/1.jpeg"
