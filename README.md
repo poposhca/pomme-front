@@ -1,6 +1,6 @@
 # WELCOME TO POMME PROJECT
 
-![Pomme Logo](https://1drv.ms/i/s!AhaAeU1CKP-Tj5pD01fINBFU5H_FfQ)
+![Pomme Logo](./public/pomme_logo.png)
 
 ## What is Pomme?
 Pomme is a workflow and a tool for teaching and learning, based on how neurons work.
