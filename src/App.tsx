@@ -8,6 +8,8 @@ import LogIn from "./views/Login";
 import AppLayout from "./views/AppLayout";
 import { LOGIN_REDIRECT_URL } from './config.ts';
 
+import Presentation from "./components/Presentation.tsx";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
     {
         path: "/quiz",
         element: <AppLayout Component={Quiz} />,
+    },
+    {
+        path: "/dev",
+        element: <Presentation />,
     }
 ]);
 
