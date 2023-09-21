@@ -3,12 +3,12 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
-import Quiz from "./components/Quiz.tsx";
+import Quiz from "./components/Quiz/Quiz.tsx";
 import LogIn from "./views/Login";
 import AppLayout from "./views/AppLayout";
 import { LOGIN_REDIRECT_URL } from './config.ts';
 
-import Presentation from "./components/Presentation.tsx";
+import Presentation from "./components/Presentation/Presentation.tsx";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/dev",
-        element: <Presentation />,
+        element: <AppLayout Component={Presentation} />,
     }
 ]);
 

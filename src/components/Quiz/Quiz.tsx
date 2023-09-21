@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
-import { useUserProfile } from './useUserProfile.ts';
-import quizIterator from "../utils/QuizIterator.ts";
-import QuizItemsTypes from "../models/QuizItemsTypes.ts";
-import QuizItem from "../models/QuizItem.ts";
-import IQuizIterator from "../models/IQuizIterator.ts";
-import MultipleOptionQuestion from "../models/MultipleOptionQuestion.ts";
-import PresentationSlide from "../models/PresentationSlide.ts";
-import handlers from "../handlers";
-import SingleAnswer from "./User/SingleAnswer.tsx";
-import MultipleAnswer from "./User/MultipleAnswer.tsx";
-import Presentation from "./Presentation.tsx";
-import MultipleOptionResults from "./Admin/MultipleOptionResults.tsx";
-import QuizStart from "./User/QuizStart.tsx";
+import { useUserProfile } from '../../hooks/useUserProfile.ts';
+import quizIterator from "../../utils/QuizIterator.ts";
+import QuizItemsTypes from "../../models/QuizItemsTypes.ts";
+import QuizItem from "../../models/QuizItem.ts";
+import IQuizIterator from "../../models/IQuizIterator.ts";
+import MultipleOptionQuestion from "../../models/MultipleOptionQuestion.ts";
+import PresentationSlide from "../../models/PresentationSlide.ts";
+import handlers from "../../handlers";
+import SingleAnswer from "../User/SingleAnswer.tsx";
+import MultipleAnswer from "../User/MultipleAnswer.tsx";
+import Presentation from "../Presentation/Presentation.tsx";
+import MultipleOptionResults from "../Admin/MultipleOptionResults.tsx";
+import QuizStart from "../User/QuizStart.tsx";
 
 const Quiz = () => {
     const [quiz, setQuiz] = useState(
