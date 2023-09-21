@@ -1,5 +1,5 @@
 import Container from "@mui/material/Container";
-import Header from "../../components/Header/Header.tsx";
+import Header from "../../components/Header";
 
 type Props = {
     Component: any;

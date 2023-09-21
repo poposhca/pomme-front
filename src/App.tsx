@@ -8,7 +8,7 @@ import LogIn from "./views/Login";
 import AppLayout from "./views/AppLayout";
 import { LOGIN_REDIRECT_URL } from './config.ts';
 
-import Presentation from "./components/Presentation/Presentation.tsx";
+import Presentation from "./components/Presentation";
 
 const router = createBrowserRouter([
     {
