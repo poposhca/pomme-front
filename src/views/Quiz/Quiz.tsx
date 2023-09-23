@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
+import QuizComponentSelector from "./QuizComponentSelector.tsx";
 import { useUserProfile } from '../../hooks/useUserProfile.ts';
 import quizIterator from "../../utils/QuizIterator.ts";
-import QuizItemsTypes from "../../models/QuizItemsTypes.ts";
 import QuizItem from "../../models/QuizItem.ts";
 import IQuizIterator from "../../models/IQuizIterator.ts";
-import MultipleOptionQuestion from "../../models/MultipleOptionQuestion.ts";
 import handlers from "../../handlers";
-import SingleAnswer from "../SingleAnswer";
-import MultipleAnswer from "../MultipleAnswer";
-import Presentation from "../Presentation";
-import MultipleOptionResults from "../MultipleOptionResults";
-import QuizStart from "../QuizStart";
 
 const Quiz = () => {
     const [quiz, setQuiz] = useState(
@@ -66,53 +60,9 @@ const Quiz = () => {
         }
     }, [user]);
 
-    console.log(user);
-
-    // Select body to render
-    let BodyComponent = <h1>Nothing Here 👀</h1>;
-    switch (question.type) {
-        case QuizItemsTypes.QUIZSTART:
-            BodyComponent = (<QuizStart />);
-            break;
-        case QuizItemsTypes.Presentation:
-            BodyComponent = (
-                <Presentation />
-            );
-            break;
-        case QuizItemsTypes.SingleAnswer:
-        case QuizItemsTypes.MultipleAnswer:
-            BodyComponent = (
-                <>
-                    {user?.role === 'admin' ? (
-                        <MultipleOptionResults
-                            question={question.item as MultipleOptionQuestion}
-                            quizInteractionHandler={serverHandler}
-                        />
-
-                    ): (
-                        <>
-                            {question.type === QuizItemsTypes.SingleAnswer && (
-                                <SingleAnswer
-                                    question={question.item as MultipleOptionQuestion}
-                                    quizInteractionHandler={serverHandler}
-                                />
-                            )}
-                            {question.type === QuizItemsTypes.MultipleAnswer && (
-                                <MultipleAnswer
-                                    question={question.item as MultipleOptionQuestion}
-                                    quizInteractionHandler={serverHandler}
-                                />
-                            )}
-                        </>
-                    )}
-                </>
-            );
-            break;
-    }
-
     return (
         <>
-            {BodyComponent}
+            <QuizComponentSelector quizItem={question} userRole={user?.role} serverHandler={serverHandler} />
             {user?.role === 'admin' && (
                 <>
                     {quiz.getCurrent() !== 0 && (

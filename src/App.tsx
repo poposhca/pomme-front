@@ -3,7 +3,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
-import Quiz from "./components/Quiz/Quiz.tsx";
+import Quiz from "./views/Quiz/Quiz.tsx";
 import LogIn from "./views/Login";
 import AppLayout from "./views/AppLayout";
 import { LOGIN_REDIRECT_URL } from './config.ts';
