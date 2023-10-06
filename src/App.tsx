@@ -8,9 +8,6 @@ import LogIn from "./views/Login";
 import AppLayout from "./views/AppLayout";
 import { LOGIN_REDIRECT_URL } from './config.ts';
 
-import Presentation from "./views/Presentation";
-import TitleImagePresentation from "./components/TitleImagePresentation";
-
 const router = createBrowserRouter([
     {
         path: "/",
@@ -28,9 +25,9 @@ const router = createBrowserRouter([
         path: "/dev",
         element: (
             <AppLayout>
-                <Presentation>
-                    <TitleImagePresentation title={"HELLO!"} image={"large.jpg"} />
-                </Presentation>
+                <h1>
+                    This Page is for develpment only
+                </h1>
             </AppLayout>
         ),
     }
