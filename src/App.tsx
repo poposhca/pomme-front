@@ -9,7 +9,7 @@ import AppLayout from "./views/AppLayout";
 import { LOGIN_REDIRECT_URL } from './config.ts';
 
 import Presentation from "./views/Presentation";
-import TitlePresentation from "./components/TitlePresentation";
+import ImageContentPresentation from "./components/ImageContentPresentation";
 
 const router = createBrowserRouter([
     {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         element: (
             <AppLayout>
                 <Presentation>
-                    <TitlePresentation title={"HELLO!"} />
+                    <ImageContentPresentation content={"HELLO!"} image={"large.jpg"} />
                 </Presentation>
             </AppLayout>
         ),
