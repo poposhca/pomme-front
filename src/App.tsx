@@ -9,6 +9,7 @@ import AppLayout from "./views/AppLayout";
 import { LOGIN_REDIRECT_URL } from './config.ts';
 
 import Presentation from "./views/Presentation";
+import TitlePresentation from "./components/TitlePresentation";
 
 const router = createBrowserRouter([
     {
@@ -17,11 +18,21 @@ const router = createBrowserRouter([
     },
     {
         path: "/quiz",
-        element: <AppLayout Component={Quiz} />,
+        element: (
+            <AppLayout>
+                <Quiz />
+            </AppLayout>
+        ),
     },
     {
         path: "/dev",
-        element: <AppLayout Component={Presentation} />,
+        element: (
+            <AppLayout>
+                <Presentation>
+                    <TitlePresentation title={"HELLO!"} />
+                </Presentation>
+            </AppLayout>
+        ),
     }
 ]);
 
