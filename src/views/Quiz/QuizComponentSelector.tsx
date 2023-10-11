@@ -7,8 +7,10 @@ import MultipleOptionResults from "../../components/MultipleOptionResults";
 import MultipleOptionQuestion from "../../models/MultipleOptionQuestion.ts";
 import SingleAnswer from "../../components/SingleAnswer";
 import MultipleAnswer from "../../components/MultipleAnswer";
-import TitlePresentation from "../../components/TitlePresentation";
-import TitlePresentationItem from "../../models/TitlePresentationItem.ts";
+import TitlePresentation, { TitlePresentationItem } from "../../components/TitlePresentation";
+import TitleImagePresentation, { TitleImagePresentationItem } from "../../components/TitleImagePresentation";
+import ImageContentPresentation, { ImageContentPresentationItem } from "../../components/ImageContentPresentation";
+import ImagePresentation, { ImagePresentationItem } from "../../components/ImagePresentation";
 
 type props = {
     quizItem: QuizItem;
@@ -20,11 +22,33 @@ const QuizComponentSelector = ({ quizItem, userRole, serverHandler }: props) => 
         case QuizItemsTypes.QUIZSTART:
             return <QuizStart />;
         case QuizItemsTypes.TitlePresentation:
-            // eslint-disable-next-line no-case-declarations
-            const item = quizItem.item as TitlePresentationItem
             return (
                 <Presentation>
-                    <TitlePresentation title={item.title} />
+                    <TitlePresentation title={(quizItem.item as TitlePresentationItem).title} />
+                </Presentation>
+            );
+        case QuizItemsTypes.TitleImagePresentation:
+            return (
+                <Presentation>
+                    <TitleImagePresentation
+                        title={(quizItem.item as TitleImagePresentationItem).title}
+                        image={(quizItem.item as TitleImagePresentationItem).image}
+                    />
+                </Presentation>
+            );
+        case QuizItemsTypes.ImageContentPresentation:
+            return (
+                <Presentation>
+                    <ImageContentPresentation
+                        image={(quizItem.item as ImageContentPresentationItem).image}
+                        content={(quizItem.item as ImageContentPresentationItem).content}
+                    />
+                </Presentation>
+            );
+        case QuizItemsTypes.ImagePresentation:
+            return (
+                <Presentation>
+                    <ImagePresentation image={(quizItem.item as ImagePresentationItem).image} />
                 </Presentation>
             );
         case QuizItemsTypes.SingleAnswer:

@@ -1,8 +1,6 @@
-type Props = {
-    title: string;
-};
+import TitlePresentationItem from './types.ts';
 
-const TitlePresentation = ({ title }: Props) => (
+const TitlePresentation = ({ title }: TitlePresentationItem) => (
     <>
         <h1>{title}</h1>
     </>

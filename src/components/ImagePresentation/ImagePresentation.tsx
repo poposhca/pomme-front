@@ -1,8 +1,6 @@
-type props = {
-    image: string;
-};
+import ImagePresentationItem from './types.ts';
 
-const ImagePresentation = ({ image }: props) => (
+const ImagePresentation = ({ image }: ImagePresentationItem) => (
     <>
         <img src={image} alt="presentation" />
     </>

@@ -1,10 +1,7 @@
+import ImageContentPresentationItem from './types.ts';
 import './styles.css';
 
-type props = {
-    image: string;
-    content: string;
-};
-const ImageContentPresentation = ({ image, content }: props) => (
+const ImageContentPresentation = ({ image, content }: ImageContentPresentationItem) => (
     <div className={"container"}>
         <h2 className={"left"}>{content}</h2>
         <div className={"right"}>
