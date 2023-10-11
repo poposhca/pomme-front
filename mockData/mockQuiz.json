@@ -1,0 +1,28 @@
+[
+  {
+    "type": "TITLE_PRESENTATION",
+    "item": {
+      "title": "WELCOME TO CITY 17"
+    }
+  },
+  {
+    "type": "IMAGE_CONTENT_PRESENTATION",
+    "item": {
+      "title": "Chems",
+      "image": "chems.jpeg"
+    }
+  },
+  {
+    "type": "TITLE_IMAGE_PRESENTATION",
+    "item": {
+      "title": "More Chems",
+      "image": "chems.jpeg"
+    }
+  },
+  {
+    "type": "IMAGE_PRESENTATION",
+    "item": {
+      "image": "large.jpg"
+    }
+  }
+]
