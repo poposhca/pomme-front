@@ -6,6 +6,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import Quiz from "./views/Quiz/Quiz.tsx";
 import LogIn from "./views/Login";
 import AppLayout from "./views/AppLayout";
+import ApiClient from "./components/ApiClient";
 import { LOGIN_REDIRECT_URL } from './config.ts';
 
 const router = createBrowserRouter([
@@ -17,7 +18,9 @@ const router = createBrowserRouter([
         path: "/quiz",
         element: (
             <AppLayout>
-                <Quiz />
+                <ApiClient>
+                    <Quiz />
+                </ApiClient>
             </AppLayout>
         ),
     },

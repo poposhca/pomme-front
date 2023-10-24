@@ -38,12 +38,15 @@ const Quiz = () => {
     }
 
     useEffect(() => {
-        // Get quiz from server
-        const newQuiz = handlers.questionHandler.getQuiz();
-        const newIterator = quizIterator(newQuiz);
-        setQuiz(newIterator);
-        setQuestion(newIterator.currentQuestion());
-        setQuizAdminId(handlers.questionHandler.getQuizAdminId());
+        handlers.questionHandler.getQuiz().then((newQuiz) => {
+            const newIterator = quizIterator(newQuiz);
+            setQuiz(newIterator);
+            setQuestion(newIterator.currentQuestion());
+        });
+        handlers.questionHandler.getQuizAdminId().then((newQuizAdminId) => {
+            console.log(newQuizAdminId);
+            setQuizAdminId(newQuizAdminId);
+        });
     }, []);
 
     // Connect to server when user is defined

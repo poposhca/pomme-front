@@ -5,7 +5,6 @@ import QuizHandlerEvents from "../models/QuizHandlerEvents.ts";
 import { QUIZ_HANDLER_URL } from "../config.ts";
 
 const socketIOQuizInteractionHandler = ({userId, quizId}: IQuizInteractionHandlerParameters) => {
-    // TDODO: refactor url hardcode
     const url = QUIZ_HANDLER_URL;
     const socket = io(url, {
         extraHeaders: {
