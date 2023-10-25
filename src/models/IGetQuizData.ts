@@ -1,7 +1,11 @@
 import QuizItems from "./QuizItem.ts";
+
+type InputParameters = {
+    quizId: string;
+};
 interface IGetQuizData {
-    getQuiz: () => Promise<QuizItems[]>;
-    getQuizAdminId: () => Promise<string>;
+    getQuiz: ({ quizId }: InputParameters) => Promise<QuizItems[]>;
+    getQuizAdminId: ({ quizId }: InputParameters) => Promise<string>;
 }
 
 export default IGetQuizData;

@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: (
             <AppLayout>
                 <ApiClient>
-                    <Quiz />
+                    <Quiz quizId="6dbec2ed-4354-4423-9b7e-4552d4c4f1a3" />
                 </ApiClient>
             </AppLayout>
         ),

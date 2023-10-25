@@ -10,12 +10,12 @@ const gqlQuestionHandler = (): IGetQuizData  => {
         cache: new InMemoryCache(),
     });
 
-    const getQuiz = async () => {
+    const getQuiz = async ({ quizId }: {quizId: string}) => {
         try {
             const result = await client.query({
                 query: gql`
                     query GetQuiz {
-                        quiz(id: "6dbec2ed-4354-4423-9b7e-4552d4c4f1a3") {
+                        quiz(id: "${quizId}") {
                             quizItems
                             adminId
                         }
@@ -33,12 +33,12 @@ const gqlQuestionHandler = (): IGetQuizData  => {
     };
 
     return ({
-        getQuiz: async () => {
-            if(quizItems.length === 0) await getQuiz();
+        getQuiz: async ({ quizId }) => {
+            if(quizItems.length === 0) await getQuiz({ quizId });
             return quizItems;
         },
-        getQuizAdminId: async () => {
-            if(quizAdminId === '') await getQuiz();
+        getQuizAdminId: async ({ quizId }) => {
+            if(quizAdminId === '') await getQuiz({ quizId });
             return quizAdminId;
         },
     });
