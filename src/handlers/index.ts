@@ -1,5 +1,5 @@
 import gqlQuestionHandler from "./gqlQuestionHandler/index.ts";
-import IGetQuizData from "../models/IGetQuizData.ts";
+import IGetQuizData from "./IGetQuizData.ts";
 import IQuizInteractionHandler, {IQuizInteractionHandlerParameters} from "../models/IQuizInteractionHandler.ts";
 import socketIOQuizInteractionHandler from "./socketIOQuizInteractionHandler.ts";
 

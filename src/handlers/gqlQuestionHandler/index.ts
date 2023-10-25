@@ -1,6 +1,7 @@
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import IGetQuizData from "../../models/IGetQuizData.ts";
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import IGetQuizData from "../IGetQuizData.ts";
 import QuizItems from "../../models/QuizItem.ts";
+import quizQueries from "./queires.ts";
 
 const gqlQuestionHandler = (): IGetQuizData  => {
     let quizItems: QuizItems[] = [];
@@ -13,14 +14,7 @@ const gqlQuestionHandler = (): IGetQuizData  => {
     const getQuiz = async ({ quizId }: {quizId: string}) => {
         try {
             const result = await client.query({
-                query: gql`
-                    query GetQuiz {
-                        quiz(id: "${quizId}") {
-                            quizItems
-                            adminId
-                        }
-                    }
-                `,
+                query: quizQueries.GET_QUIZ(quizId),
             });
             console.log(result);
             quizItems = JSON.parse(result.data.quiz.quizItems) as QuizItems[];

@@ -1,4 +1,4 @@
-import QuizItems from "./QuizItem.ts";
+import QuizItems from "../models/QuizItem.ts";
 
 type InputParameters = {
     quizId: string;
