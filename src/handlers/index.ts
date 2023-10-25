@@ -1,5 +1,5 @@
-import mockQuestionHandler from "./mockQuestionHandler.ts";
-import IGetQuizData from "../models/IGetQuizData.ts";
+import gqlQuestionHandler from "./gqlQuestionHandler/index.ts";
+import IGetQuizData from "./IGetQuizData.ts";
 import IQuizInteractionHandler, {IQuizInteractionHandlerParameters} from "../models/IQuizInteractionHandler.ts";
 import socketIOQuizInteractionHandler from "./socketIOQuizInteractionHandler.ts";
 
@@ -9,7 +9,7 @@ interface IHandlers {
 }
 
 const handlers: IHandlers = {
-    questionHandler: mockQuestionHandler,
+    questionHandler: gqlQuestionHandler(),
     quizInteractionHandler: socketIOQuizInteractionHandler,
 };
 

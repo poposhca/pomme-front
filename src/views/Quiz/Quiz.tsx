@@ -5,9 +5,11 @@ import { useUserProfile } from '../../hooks/useUserProfile.ts';
 import quizIterator from "../../utils/QuizIterator.ts";
 import QuizItem from "../../models/QuizItem.ts";
 import IQuizIterator from "../../models/IQuizIterator.ts";
+import IQuizInteractionHandler from "../../models/IQuizInteractionHandler.ts";
 import handlers from "../../handlers";
+import { Props } from "./types.ts";
 
-const Quiz = () => {
+const Quiz = ({ quizId }: Props) => {
     const [quiz, setQuiz] = useState(
         {
             getCurrent: () => 0,
@@ -17,8 +19,7 @@ const Quiz = () => {
     const [question, setQuestion] = useState({} as QuizItem);
     const [quizAdminId, setQuizAdminId] = useState('');
     const user = useUserProfile();
-    // TODO: remove any
-    const [serverHandler, setServerHandler] = useState({} as any);
+    const [serverHandler, setServerHandler] = useState({} as IQuizInteractionHandler);
 
     const setNextQuestion = () => {
         const nextQuestion = quiz.next();
@@ -38,21 +39,23 @@ const Quiz = () => {
     }
 
     useEffect(() => {
-        // Get quiz from server
-        const newQuiz = handlers.questionHandler.getQuiz();
-        const newIterator = quizIterator(newQuiz);
-        setQuiz(newIterator);
-        setQuestion(newIterator.currentQuestion());
-        setQuizAdminId(handlers.questionHandler.getQuizAdminId());
+        handlers.questionHandler.getQuiz({ quizId }).then((newQuiz) => {
+            const newIterator = quizIterator(newQuiz);
+            setQuiz(newIterator);
+            setQuestion(newIterator.currentQuestion());
+        });
+        handlers.questionHandler.getQuizAdminId({ quizId }).then((newQuizAdminId) => {
+            console.log(newQuizAdminId);
+            setQuizAdminId(newQuizAdminId);
+        });
     }, []);
 
     // Connect to server when user is defined
     useEffect(() => {
         if(user) {
-            // TODO: Un-hardcode Quiz ID to implement different quizzes
             const newServerHandler = handlers.quizInteractionHandler({
                 userId: user?.id || '000',
-                quizId: '01',
+                quizId,
             });
             newServerHandler.joinQuiz(quizAdminId);
             newServerHandler.setGetQuizPositionEvent(getQuizPosition)
