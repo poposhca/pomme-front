@@ -1,10 +1,10 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import IGetQuizData from "../IGetQuizData.ts";
-import QuizItems from "../../models/QuizItem.ts";
+import { QuizItem } from "../../models/index.ts";
 import quizQueries from "./queires.ts";
 
 const gqlQuestionHandler = (): IGetQuizData  => {
-    let quizItems: QuizItems[] = [];
+    let quizItems: QuizItem[] = [];
     let quizAdminId = '';
     const client = new ApolloClient({
         uri: 'https://orca-app-co6wj.ondigitalocean.app/pomme-api',
@@ -17,7 +17,7 @@ const gqlQuestionHandler = (): IGetQuizData  => {
                 query: quizQueries.GET_QUIZ(quizId),
             });
             console.log(result);
-            quizItems = JSON.parse(result.data.quiz.quizItems) as QuizItems[];
+            quizItems = JSON.parse(result.data.quiz.quizItems) as QuizItem[];
             quizAdminId = result.data.quiz.adminId;
         } catch (error) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -34,6 +34,9 @@ const gqlQuestionHandler = (): IGetQuizData  => {
         getQuizAdminId: async ({ quizId }) => {
             if(quizAdminId === '') await getQuiz({ quizId });
             return quizAdminId;
+        },
+        getQuizzesList: async () => {
+            return Promise.resolve([]);
         },
     });
 };
