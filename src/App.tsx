@@ -7,6 +7,7 @@ import Quiz from "./views/Quiz/Quiz.tsx";
 import LogIn from "./views/Login";
 import AppLayout from "./views/AppLayout";
 import MyLearning from "./views/MyLearning";
+import handlers from "./handlers"
 import { LOGIN_REDIRECT_URL } from './config.ts';
 
 const router = createBrowserRouter([
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
         path: "/my-learning",
         element: (
             <AppLayout>
-                <MyLearning />
+                <MyLearning getQuizDataHandler={handlers.questionHandler} />
             </AppLayout>
         ),
     },

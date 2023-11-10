@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import IGetQuizData from "../IGetQuizData.ts";
-import { QuizItem } from "../../models/index.ts";
+import { QuizItem, QuizInfo } from "../../models/index.ts";
 import quizQueries from "./queires.ts";
 
 const gqlQuestionHandler = (): IGetQuizData  => {
@@ -16,7 +16,6 @@ const gqlQuestionHandler = (): IGetQuizData  => {
             const result = await client.query({
                 query: quizQueries.GET_QUIZ(quizId),
             });
-            console.log(result);
             quizItems = JSON.parse(result.data.quiz.quizItems) as QuizItem[];
             quizAdminId = result.data.quiz.adminId;
         } catch (error) {
@@ -36,7 +35,11 @@ const gqlQuestionHandler = (): IGetQuizData  => {
             return quizAdminId;
         },
         getQuizzesList: async () => {
-            return Promise.resolve([]);
+            const result = await client.query({
+                query: quizQueries.GET_ALL_QUIZZES_INFO(),
+            });
+            const quizzesInfo = result.data.getAllQuizesInfo as QuizInfo[];
+            return quizzesInfo;
         },
     });
 };

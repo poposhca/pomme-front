@@ -2,21 +2,26 @@ import { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Box from "@mui/material/Box";
 import QuizInfoCard from "../../components/QuizInfoCard";
+import IGetQuizData from "../../handlers/IGetQuizData.ts";
+import {QuizInfo} from "../../models";
 import "./styles.css";
 
-const MyLearning = () => {
-    const [quizzesInfo, setQuizzesInfo] = useState([{}]);
+
+const MyLearning = ({ getQuizDataHandler }: {getQuizDataHandler: IGetQuizData}) => {
+    const [quizzesInfo, setQuizzesInfo] = useState([] as QuizInfo[]);
 
     useEffect(() => {
-        setQuizzesInfo([{}, {}, {}, {}, {}, {}]);
+        getQuizDataHandler.getQuizzesList().then(result => {
+            setQuizzesInfo(result);
+        });
     }, []);
 
     return (
         <Box className="quizzesBox">
             <Grid container spacing={2}>
-                {quizzesInfo.map(() => (
-                    <Grid item xs={4}>
-                        <QuizInfoCard quizId="01" quizName="Perro" />
+                {quizzesInfo.map((quizInfo, i) => (
+                    <Grid item xs={4} key={i}>
+                        <QuizInfoCard quizId={quizInfo.id} quizName={quizInfo.name} />
                     </Grid>
                 ))}
             </Grid>
