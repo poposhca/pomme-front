@@ -9,14 +9,14 @@
     "type": "IMAGE_CONTENT_PRESENTATION",
     "item": {
       "title": "Chems",
-      "image": "chems.jpeg"
+      "image": "https://storage.googleapis.com/pomme-quiz-images/test-quiz/chems.jpeg"
     }
   },
   {
     "type": "TITLE_IMAGE_PRESENTATION",
     "item": {
       "title": "More Chems",
-      "image": "chems.jpeg"
+      "image": "https://storage.googleapis.com/pomme-quiz-images/test-quiz/chems.jpeg"
     }
   },
   {
