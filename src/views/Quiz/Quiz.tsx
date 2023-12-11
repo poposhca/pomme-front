@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 import QuizComponentSelector from "./QuizComponentSelector.tsx";
 import { useUserProfile } from '../../hooks/useUserProfile.ts';
 import quizIterator from "../../utils/QuizIterator.ts";
@@ -64,19 +65,32 @@ const Quiz = ({ quizId }: Props) => {
     }, [user]);
 
     return (
-        <>
-            <QuizComponentSelector quizItem={question} userRole={user?.role} serverHandler={serverHandler} />
-            {user?.role === 'admin' && (
-                <>
-                    {quiz.getCurrent() !== 0 && (
-                        <Button variant="outlined" onClick={setPreviewsQuestion}>Back</Button>
-                    )}
-                    {quiz.getCurrent() !== quiz.getLength() - 1 && (
-                        <Button variant="outlined" onClick={setNextQuestion}>Next</Button>
-                    )}
-                </>
-            )}
-        </>
+        <Grid
+            container
+            direction="column"
+            spacing={3}
+            justifyContent="space-between"
+        >
+            <Grid item xs={12}>
+                <QuizComponentSelector quizItem={question} userRole={user?.role} serverHandler={serverHandler} />
+            </Grid>
+            <Grid item xs={12}>
+                {user?.role === 'admin' && (
+                    <Grid container justifyContent={"space-between"}>
+                        <Grid item md={1}>
+                            {quiz.getCurrent() !== 0 && (
+                                <Button variant="outlined" onClick={setPreviewsQuestion}>Back</Button>
+                            )}
+                        </Grid>
+                        <Grid item md={1}>
+                            {quiz.getCurrent() !== quiz.getLength() - 1 && (
+                                <Button variant="outlined" onClick={setNextQuestion}>Next</Button>
+                            )}
+                        </Grid>
+                    </Grid>
+                )}
+            </Grid>
+        </Grid>
     );
 
 
