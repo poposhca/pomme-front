@@ -3,7 +3,7 @@ import IGetQuizData from "./IGetQuizData.ts";
 import IQuizInteractionHandler, {IQuizInteractionHandlerParameters} from "../models/IQuizInteractionHandler.ts";
 import socketIOQuizInteractionHandler from "./socketIOQuizInteractionHandler.ts";
 
-interface IHandlers {
+export interface IHandlers {
     questionHandler: IGetQuizData;
     quizInteractionHandler: ({userId, quizId}:IQuizInteractionHandlerParameters ) => IQuizInteractionHandler;
 }

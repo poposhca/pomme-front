@@ -2,7 +2,7 @@ import QuizItemsTypes from "../../models/QuizItemsTypes.ts";
 import QuizItem from "../../models/QuizItem.ts";
 import IQuizInteractionHandler from "../../models/IQuizInteractionHandler.ts";
 import QuizStart from "../../components/QuizStart";
-import Presentation from "../Presentation";
+import Presentation from "../../components/Presentation";
 import MultipleOptionResults from "../../components/MultipleOptionResults";
 import MultipleOptionQuestion from "../../models/MultipleOptionQuestion.ts";
 import SingleAnswer from "../../components/SingleAnswer";

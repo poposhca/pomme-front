@@ -7,19 +7,17 @@ const quizQueries = {
                 quizItems
                 adminId
             }
-        }
-    `,
-    GET_ALL_QUIZ_INFO: () => gql`
-        query GetAllQuizesInfo {
-        getAllQuizesInfo {
-            id
-            name
-            image
-            updatedAt
-            createdAt
-        }
-    }
-    `
+        }`,
+    GET_ALL_QUIZZES_INFO: () => gql`
+        query GetAllQuizzesInfo {
+            getAllQuizesInfo {
+                id
+                name
+                image
+                updatedAt
+                createdAt
+            }
+    }`
 };
 
 export default quizQueries;
