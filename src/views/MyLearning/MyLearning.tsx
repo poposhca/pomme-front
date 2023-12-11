@@ -21,7 +21,7 @@ const MyLearning = ({ getQuizDataHandler }: {getQuizDataHandler: IGetQuizData}) 
             <Grid container spacing={2}>
                 {quizzesInfo.map((quizInfo, i) => (
                     <Grid item xs={4} key={i}>
-                        <QuizInfoCard quizId={quizInfo.id} quizName={quizInfo.name} />
+                        <QuizInfoCard quizId={quizInfo.id} quizName={quizInfo.name} quizImageUrl={quizInfo.image || ""} />
                     </Grid>
                 ))}
             </Grid>
