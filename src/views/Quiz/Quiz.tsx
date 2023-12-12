@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import { useParams } from "react-router-dom";
 import QuizComponentSelector from "./QuizComponentSelector.tsx";
 import { useUserProfile } from '../../hooks/useUserProfile.ts';
 import quizIterator from "../../utils/QuizIterator.ts";
@@ -11,6 +12,7 @@ import handlers from "../../handlers";
 import { Props } from "./types.ts";
 
 const Quiz = ({ quizId }: Props) => {
+    const { quizId: quizIdParam } = useParams<{ quizId: string }>();
     const [quiz, setQuiz] = useState(
         {
             getCurrent: () => 0,
@@ -40,6 +42,7 @@ const Quiz = ({ quizId }: Props) => {
     }
 
     useEffect(() => {
+        console.log(quizIdParam);
         handlers.questionHandler.getQuiz({ quizId }).then((newQuiz) => {
             const newIterator = quizIterator(newQuiz);
             setQuiz(newIterator);
