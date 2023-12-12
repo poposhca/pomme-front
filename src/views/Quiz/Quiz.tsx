@@ -9,16 +9,16 @@ import QuizItem from "../../models/QuizItem.ts";
 import IQuizIterator from "../../models/IQuizIterator.ts";
 import IQuizInteractionHandler from "../../models/IQuizInteractionHandler.ts";
 import handlers from "../../handlers";
-import { Props } from "./types.ts";
 
-const Quiz = ({ quizId }: Props) => {
-    const { quizId: quizIdParam } = useParams<{ quizId: string }>();
-    const [quiz, setQuiz] = useState(
-        {
-            getCurrent: () => 0,
-            getLength: () => 0,
-            currentQuestion: () => ({ type: 'empty' })
-        } as IQuizIterator);
+const defaultQuiz = {
+    getCurrent: () => 0,
+    getLength: () => 0,
+    currentQuestion: () => ({ type: 'empty' })
+} as IQuizIterator;
+
+const Quiz = () => {
+    const { quizId } = useParams<{ quizId: string }>();
+    const [quiz, setQuiz] = useState(defaultQuiz);
     const [question, setQuestion] = useState({} as QuizItem);
     const [quizAdminId, setQuizAdminId] = useState('');
     const user = useUserProfile();
@@ -42,20 +42,22 @@ const Quiz = ({ quizId }: Props) => {
     }
 
     useEffect(() => {
-        console.log(quizIdParam);
+        if(quizId === undefined) return;
+        console.log(quizId);
         handlers.questionHandler.getQuiz({ quizId }).then((newQuiz) => {
+            console.log(newQuiz);
             const newIterator = quizIterator(newQuiz);
             setQuiz(newIterator);
             setQuestion(newIterator.currentQuestion());
         });
         handlers.questionHandler.getQuizAdminId({ quizId }).then((newQuizAdminId) => {
-            console.log(newQuizAdminId);
             setQuizAdminId(newQuizAdminId);
         });
-    }, []);
+    }, [quizId]);
 
     // Connect to server when user is defined
     useEffect(() => {
+        if(quizId === undefined) return;
         if(user) {
             const newServerHandler = handlers.quizInteractionHandler({
                 userId: user?.id || '000',
@@ -65,7 +67,7 @@ const Quiz = ({ quizId }: Props) => {
             newServerHandler.setGetQuizPositionEvent(getQuizPosition)
             setServerHandler(newServerHandler);
         }
-    }, [user]);
+    }, [user, quizId]);
 
     return (
         <Grid

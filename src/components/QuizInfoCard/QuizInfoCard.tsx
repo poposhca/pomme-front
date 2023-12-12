@@ -5,6 +5,7 @@ import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
+import { Link } from "react-router-dom";
 
 const QuizInfoCard = ({ quizId, quizName, quizImageUrl }: Props) => {
     return (
@@ -20,7 +21,9 @@ const QuizInfoCard = ({ quizId, quizName, quizImageUrl }: Props) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Join {quizId}</Button>
+                <Link to={`/quiz/${quizId}`}>
+                    <Button size="small">Join Quiz</Button>
+                </Link>
             </CardActions>
         </Card>
     );

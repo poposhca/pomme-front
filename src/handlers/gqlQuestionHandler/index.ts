@@ -27,11 +27,11 @@ const gqlQuestionHandler = (): IGetQuizData  => {
 
     return ({
         getQuiz: async ({ quizId }) => {
-            if(quizItems.length === 0) await getQuiz({ quizId });
+            await getQuiz({ quizId });
             return quizItems;
         },
         getQuizAdminId: async ({ quizId }) => {
-            if(quizAdminId === '') await getQuiz({ quizId });
+            await getQuiz({ quizId });
             return quizAdminId;
         },
         getQuizzesList: async () => {
