@@ -1,5 +1,5 @@
 .reveal {
-    position:absolute;
-    height: 70%;
-    width: 70%;
+    position: relative;
+    height: 100%;
+    width: 100%;
 }

@@ -24,10 +24,10 @@ const router = createBrowserRouter([
         ),
     },
     {
-        path: "/quiz",
+        path: "/quiz/:quizId",
         element: (
             <AppLayout>
-                <Quiz quizId="6dbec2ed-4354-4423-9b7e-4552d4c4f1a3" />
+                <Quiz />
             </AppLayout>
         ),
     },

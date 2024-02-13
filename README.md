@@ -12,9 +12,11 @@ Pomme is a workflow and a tool for teaching and learning, based on how neurons w
 ## The Stack
 * React 18
 * Vite
+* [Auth0](https://auth0.com/)
 * Material UI
 * Socket IO
 * Apollo Client
+* [React Router V5](https://v5.reactrouter.com/)
 
 ## How to run the project
 1. `npm install`
