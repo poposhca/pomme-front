@@ -19,11 +19,13 @@ const MyLearning = ({ getQuizDataHandler }: {getQuizDataHandler: IGetQuizData}) 
     return (
         <Box className="quizzesBox">
             <Grid container spacing={2}>
-                {quizzesInfo.map((quizInfo, i) => (
+                {quizzesInfo.length > 0 ?  quizzesInfo.map((quizInfo, i) => (
                     <Grid item xs={4} key={i}>
                         <QuizInfoCard quizId={quizInfo.id} quizName={quizInfo.name} quizImageUrl={quizInfo.image || ""} />
                     </Grid>
-                ))}
+                ))
+                : <h1>No Quizzes Found</h1>
+                }
             </Grid>
         </Box>
     )

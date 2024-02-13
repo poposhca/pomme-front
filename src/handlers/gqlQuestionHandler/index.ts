@@ -2,12 +2,13 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import IGetQuizData from "../IGetQuizData.ts";
 import { QuizItem, QuizInfo } from "../../models/index.ts";
 import quizQueries from "./queires.ts";
+import {API_URL} from "../../config.ts";
 
 const gqlQuestionHandler = (): IGetQuizData  => {
     let quizItems: QuizItem[] = [];
     let quizAdminId = '';
     const client = new ApolloClient({
-        uri: 'https://orca-app-co6wj.ondigitalocean.app/pomme-api',
+        uri: API_URL,
         cache: new InMemoryCache(),
     });
 
