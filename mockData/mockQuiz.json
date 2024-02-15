@@ -24,5 +24,45 @@
     "item": {
       "image": "large.jpg"
     }
+  },
+  {
+    "type": "SINGLE_ANSWER",
+    "item": {
+      "label": "What is the name of the fourth planet in the solar system?",
+      "options": [
+        {
+          "label": "earth",
+          "isCorrectAnswer": false
+        },
+        {
+          "label": "mars",
+          "isCorrectAnswer": true
+        },
+        {
+          "label": "pluto",
+          "isCorrectAnswer": false
+        }
+      ]
+    }
+  },
+  {
+    "type": "MULTIPLE_ANSWER",
+    "item": {
+      "label": "Select the true statements",
+      "options": [
+        {
+          "label": "true1",
+          "isCorrectAnswer": true
+        },
+        {
+          "label": "true2",
+          "isCorrectAnswer": true
+        },
+        {
+          "label": "false",
+          "isCorrectAnswer": false
+        }
+      ]
+    }
   }
 ]
