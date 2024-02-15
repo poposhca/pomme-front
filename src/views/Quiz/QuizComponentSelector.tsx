@@ -11,6 +11,7 @@ import TitlePresentation, { TitlePresentationItem } from "../../components/Title
 import TitleImagePresentation, { TitleImagePresentationItem } from "../../components/TitleImagePresentation";
 import ImageContentPresentation, { ImageContentPresentationItem } from "../../components/ImageContentPresentation";
 import ImagePresentation, { ImagePresentationItem } from "../../components/ImagePresentation";
+import SimpleContentPresentation, { SimpleContentPresentationItem } from "../../components/SimpleContentPresentation";
 
 type props = {
     quizItem: QuizItem;
@@ -25,6 +26,12 @@ const QuizComponentSelector = ({ quizItem, userRole, serverHandler }: props) => 
             return (
                 <Presentation>
                     <TitlePresentation title={(quizItem.item as TitlePresentationItem).title} />
+                </Presentation>
+            );
+        case QuizItemsTypes.SimpleContentPresentation:
+            return (
+                <Presentation>
+                    <SimpleContentPresentation content={(quizItem.item as SimpleContentPresentationItem).content} />
                 </Presentation>
             );
         case QuizItemsTypes.TitleImagePresentation:
