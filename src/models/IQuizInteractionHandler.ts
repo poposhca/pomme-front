@@ -6,6 +6,7 @@ interface IQuizInteractionHandler {
     receiveAnswer: (eventFunc: (answer: ReceiveAnswerMessage) => void) => void;
     setGetQuizPositionEvent: (eventFunc: (position: number) => void) => void;
     setQuizPosition: (position: number | undefined) => void;
+    exitQuiz: () => void;
 }
 
 export type IQuizInteractionHandlerParameters = {

@@ -45,6 +45,9 @@ const socketIOQuizInteractionHandler = ({userId, quizId}: IQuizInteractionHandle
                 quizId,
                 position,
             })
+        },
+        exitQuiz: () => {
+            socket.disconnect();
         }
     } as IQuizInteractionHandler;
 }

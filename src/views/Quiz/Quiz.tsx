@@ -56,8 +56,13 @@ const Quiz = () => {
     }, [quiz, quizId, user]);
 
     useEffect(() => () => {
-        console.log('unmount');
-    }, []);
+        if(serverHandler) {
+            console.log('exiting quiz');
+            serverHandler.exitQuiz();
+        } else {
+            console.log('no server handler');
+        }
+    }, [serverHandler]);
 
     return (
         <Grid
