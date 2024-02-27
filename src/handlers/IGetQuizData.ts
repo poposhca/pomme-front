@@ -6,7 +6,7 @@ type InputParameters = {
 interface IGetQuizData {
     getQuizzesList: () => Promise<QuizInfo[]>;
     getQuiz: ({ quizId }: InputParameters) => Promise<QuizItem[]>;
-    getQuizAdminId: ({ quizId }: InputParameters) => Promise<string>;
+    getQuizAdminId: () => string;
 }
 
 export default IGetQuizData;
