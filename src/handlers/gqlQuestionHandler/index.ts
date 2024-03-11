@@ -31,8 +31,7 @@ const gqlQuestionHandler = (): IGetQuizData  => {
             await getQuiz({ quizId });
             return quizItems;
         },
-        getQuizAdminId: async ({ quizId }) => {
-            await getQuiz({ quizId });
+        getQuizAdminId: () => {
             return quizAdminId;
         },
         getQuizzesList: async () => {

@@ -1,0 +1,48 @@
+{
+    // VS Code Snippets that helps to create a pomme quiz
+    // To use this file open vscode and press `Ctrl + Shift + P` and type `Preferences: Configure User Snippets` and select `json` and paste the following code
+    "Create new pomme quiz": {
+        "prefix": "pomme quiz",
+        "body": "[\n\t{\n\t\t\"type\":\"QUIZSTART\"\n\t},\n\t$0\n]",
+        "description": "Create a new pomme quiz",
+    },
+    "Create pomme quiz item": {
+        "prefix": "pomme item",
+        "body": "{\n\t\"type\": \"${1|MULTIPLE_ANSWER,TITLE_PRESENTATION,SIMPLE_CONTENT_PRESENTATION,IMAGE_CONTENT_PRESENTATION,TITLE_IMAGE_PRESENTATION,IMAGE_PRESENTATION,SINGLE_ANSWER|}\",\n\t\"item\": ${2:pomme item}\n}",
+    },
+    "Create new multiple answer item": {
+        "prefix": "pomme multiple answer",
+        "body": "{\n\t\"label\": \"$1\",\n\t\"options\": [\n\t\t$2\n\t]\n}",
+        "description": "Create a new multiple answer question"
+    },
+    "Create new option": {
+        "prefix": "pomme option",
+        "body": "{\n\t\"label\": \"$1\",\n\t\"isCorrectAnswer\": $2\n}",
+        "description": "Create a new option"
+    },
+    "Create Title Presentation": {
+        "prefix": "pomme title presentation",
+        "body": "{\n\t\"title\": \"$1\"\n}",
+        "description": "Create a new title presentation"
+    },
+    "Create Simple Content Presentation": {
+        "prefix": "pomme simple content presentation",
+        "body": "{\n\t\"content\": \"$1\"\n}",
+        "description": "Create a new simple content presentation"
+    },
+    "Create Image Content Presentation": {
+        "prefix": "pomme image content presentation",
+        "body": "{\n\t\"content\": \"$1\",\n\t\"image\": \"${2:image url}\"\n}",
+        "description": "Create a new image content presentation"
+    },
+    "Create Title Image Presentation": {
+        "prefix": "pomme title image presentation",
+        "body": "{\n\t\"content\": \"$1\",\n\t\"image\": \"${2:image url}\"\n}",
+        "description": "Create a new title image presentation"
+    },
+    "Create Image Presentation": {
+        "prefix": "pomme image presentation",
+        "body": "{\n\t\"image\": \"${1:image url}\"\n}",
+        "description": "Create a new image presentation"
+    }
+}
