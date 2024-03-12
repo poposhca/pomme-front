@@ -36,8 +36,8 @@ const socketIOQuizInteractionHandler = ({userId, quizId}: IQuizInteractionHandle
             });
         },
         setGetQuizPositionEvent: (eventFunc: (position: number) => void) => {
-            socket.on(QuizHandlerEvents.sendQuizPosition, (newPosition: number) => {
-                eventFunc(newPosition);
+            socket.on(QuizHandlerEvents.sendQuizPosition, (newPosition: string) => {
+                eventFunc(Number(newPosition));
             });
         },
         setQuizPosition: (position: number) => {

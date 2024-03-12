@@ -22,7 +22,7 @@ const Presentation = ({ children }: props)=> {
 
     return (
         <Box sx={{
-            height: '80vh',
+            height: '100%',
         }}>
             <div className="reveal">
                 <div className="slides">
