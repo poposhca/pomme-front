@@ -22,6 +22,9 @@ const QuizController = ({
                 )}
             </Grid>
             <Grid item md={1}>
+                <Button variant="outlined">Retry</Button>
+            </Grid>
+            <Grid item md={1}>
                 {currentPosition !== quizLength - 1 && (
                     <Button variant="outlined" onClick={setNextQuestion}>Next</Button>
                 )}

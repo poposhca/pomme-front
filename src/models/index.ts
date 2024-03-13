@@ -1,3 +1,8 @@
+export type { default as IQuizInteractionHandler } from './IQuizInteractionHandler.ts';
+export type { default as IQuizIterator } from './IQuizIterator.ts';
+export type { ReceiveAnswerMessage, SendAnswersMessage } from './Messages.ts';
+export type { default as MultipleOptionQuestion } from './MultipleOptionQuestion.ts';
+export type { default as Option } from './Option.ts';
 export type { default as User } from './User.ts';
 export { default as QuizItemsTypes } from './QuizItemsTypes.ts';
 export type { default as QuizItem } from './QuizItem.ts';
