@@ -1,7 +1,7 @@
 import QuizItem from './QuizItem';
 
 type QuizBlock = {
-    blockId: string;
+    blockId: number;
     quizItems: QuizItem[];
 };
 
