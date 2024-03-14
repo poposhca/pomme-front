@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import QuizComponentSelector from "./QuizComponentSelector.tsx";
 import QuizController from "../../components/QuizConteroller";
 import { useUserProfile } from '../../hooks/useUserProfile.ts';
-import quizIterator from "../../utils/QuizIterator.ts";
+import quizIterator from "../../utils/QuizBlockIterator.ts";
 import QuizItem from "../../models/QuizItem.ts";
 import IQuizIterator from "../../models/IQuizIterator.ts";
 import IQuizInteractionHandler from "../../models/IQuizInteractionHandler.ts";

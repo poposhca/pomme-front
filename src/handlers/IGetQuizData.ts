@@ -1,11 +1,11 @@
-import { QuizItem, QuizInfo } from "../models/index.ts";
+import { Quiz, QuizInfo } from "../models/index.ts";
 
 type InputParameters = {
     quizId: string;
 };
 interface IGetQuizData {
     getQuizzesList: () => Promise<QuizInfo[]>;
-    getQuiz: ({ quizId }: InputParameters) => Promise<QuizItem[]>;
+    getQuiz: ({ quizId }: InputParameters) => Promise<Quiz>;
     getQuizAdminId: () => string;
 }
 
