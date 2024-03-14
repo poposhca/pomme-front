@@ -66,6 +66,10 @@ const quizBlockIterator = (items: QuizBlock[]): IQuizIterator => {
             }
             return items[actualBlockIndex].quizItems[actualItemIndex];
         },
+        resetBlock: () => {
+            actualItemIndex = 0;
+            return items[actualBlockIndex].quizItems[actualItemIndex];
+        },
         getCurrent: () => {
             return items[actualBlockIndex].blockId + actualItemIndex;
         },

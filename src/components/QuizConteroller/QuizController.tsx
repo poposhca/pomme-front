@@ -6,13 +6,15 @@ type Props = {
     quizLength: number;
     setPreviewsQuestion: () => void;
     setNextQuestion: () => void;
+    setRetry: () => void;
 }
 
 const QuizController = ({
     currentPosition,
     quizLength,
     setPreviewsQuestion,
-    setNextQuestion
+    setNextQuestion,
+    setRetry,
 }: Props) => {
     return (
         <Grid container justifyContent={"space-between"}>
@@ -22,7 +24,7 @@ const QuizController = ({
                 )}
             </Grid>
             <Grid item md={1}>
-                <Button variant="outlined">Retry</Button>
+                <Button variant="outlined" onClick={setRetry}>Retry</Button>
             </Grid>
             <Grid item md={1}>
                 {currentPosition !== quizLength - 1 && (

@@ -22,6 +22,10 @@ const quizIterator = (items: QuizItem[]): IQuizIterator => {
             }
             return items[actualIndex];
         },
+        resetBlock: () => {
+            actualIndex--;
+            return items[actualIndex]
+        },
         getCurrent: () => actualIndex,
         getLength: () => items.length,
     });

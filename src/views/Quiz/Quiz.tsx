@@ -30,6 +30,12 @@ const Quiz = () => {
         serverHandler?.setQuizPosition(quiz?.getCurrent());
     }
 
+    const setRetryQuestion = () => {
+        const retryQuestion = quiz?.resetBlock();
+        setQuestion(retryQuestion);
+        serverHandler?.setQuizPosition(quiz?.getCurrent());
+    }
+
     useEffect(() => {
         if (user && quizId) {
             handlers.questionHandler.getQuiz({quizId}).then((newQuiz) => {
@@ -95,6 +101,7 @@ const Quiz = () => {
                             quizLength={quiz.getLength()}
                             setPreviewsQuestion={setPreviewsQuestion}
                             setNextQuestion={setNextQuestion}
+                            setRetry={setRetryQuestion}
                         />
                     )}
                     </Box>
