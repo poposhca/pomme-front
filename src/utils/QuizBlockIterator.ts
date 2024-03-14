@@ -1,40 +1,41 @@
 import { QuizBlock, IQuizIterator } from '../models'
 
-const quizIterator = (items: QuizBlock[]): IQuizIterator => {
-    let actualBlockIntex = 0;
+const quizBlockIterator = (items: QuizBlock[]): IQuizIterator => {
+    let actualBlockIndex = 0;
     let actualItemIndex = 0;
     return ({
         goTo: (index: number) => {
             // TODO: Implement this method
+            console.log(`index ${index}`);
             throw new Error('Method not implemented.');
         },
         currentQuestion: () => {
-            const actualBlock = items[actualBlockIntex];
+            const actualBlock = items[actualBlockIndex];
             return actualBlock.quizItems[actualItemIndex];
         },
         previous: () => {
             const newItemIndex = actualItemIndex - 1;
             if (newItemIndex < 0) {
-                actualBlockIntex--;
-                actualItemIndex = items[actualBlockIntex].quizItems.length - 1;
+                actualBlockIndex--;
+                actualItemIndex = items[actualBlockIndex].quizItems.length - 1;
             } else {
                 actualItemIndex = newItemIndex;
             }
-            return items[actualBlockIntex].quizItems[actualItemIndex];
+            return items[actualBlockIndex].quizItems[actualItemIndex];
         },
         next: () => {
             const newItemIndex = actualItemIndex + 1;
-            const actualItemsLength = items[actualBlockIntex].quizItems.length;
+            const actualItemsLength = items[actualBlockIndex].quizItems.length;
             if (newItemIndex === actualItemsLength) {
-                actualBlockIntex++;
+                actualBlockIndex++;
                 actualItemIndex = 0;
             } else {
                 actualItemIndex = newItemIndex;
             }
-            return items[actualBlockIntex].quizItems[actualItemIndex];
+            return items[actualBlockIndex].quizItems[actualItemIndex];
         },
         getCurrent: () => {
-            return actualBlockIntex + actualItemIndex;
+            return items[actualBlockIndex].blockId + actualItemIndex;
         },
         getLength: () => {
             const lastBlockId = items[items.length - 1].blockId;
@@ -44,4 +45,4 @@ const quizIterator = (items: QuizBlock[]): IQuizIterator => {
     });
 }
 
-export default quizIterator;
+export default quizBlockIterator;
