@@ -3,11 +3,43 @@ import { QuizBlock, IQuizIterator } from '../models'
 const quizBlockIterator = (items: QuizBlock[]): IQuizIterator => {
     let actualBlockIndex = 0;
     let actualItemIndex = 0;
+
+    const binarySearch = (target: number): QuizBlock | null => {
+        // Edge case, if the target is greater than the length of the quiz
+        if(target > items.length) {
+            const lastBlock = items[items.length - 1];
+            if (lastBlock.quizItems.length + lastBlock.blockId -1 < target) {
+                return null;
+            }
+            return lastBlock;
+        }
+        // Do the search
+        let left = 0;
+        let right = items.length - 1;
+        while (left <= right) {
+            const middle = Math.floor((left + right) / 2);
+            const middleId = items[middle].blockId;
+            if (middleId <= target && items[middle + 1].blockId > target) {
+                return items[middle];
+            } else if (middleId < target) {
+                left = middle + 1;
+            } else {
+                right = middle - 1;
+            }
+        }
+        return null;
+    }
+
     return ({
         goTo: (index: number) => {
-            // TODO: Implement this method
-            console.log(`index ${index}`);
-            throw new Error('Method not implemented.');
+            const blockResult = binarySearch(index);
+            if (blockResult) {
+                actualBlockIndex = items.indexOf(blockResult);
+                actualItemIndex = index - blockResult.blockId;
+                return items[actualBlockIndex].quizItems[actualItemIndex];
+            } else {
+                throw new Error('Index out of bounds');
+            }
         },
         currentQuestion: () => {
             const actualBlock = items[actualBlockIndex];
