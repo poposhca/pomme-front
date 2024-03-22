@@ -6,7 +6,7 @@ const quizBlockIterator = (items: QuizBlock[]): IQuizIterator => {
 
     const binarySearch = (target: number): QuizBlock | null => {
         // Edge case, if the target is greater than the length of the quiz
-        if(target > items.length) {
+        if(target >= items.length - 1) {
             const lastBlock = items[items.length - 1];
             if (lastBlock.quizItems.length + lastBlock.blockId -1 < target) {
                 return null;

@@ -41,6 +41,7 @@ const Quiz = () => {
             handlers.questionHandler.getQuiz({quizId}).then((newQuiz) => {
                 const newIterator = quizIterator(newQuiz);
                 setQuiz(newIterator);
+                setQuestion(newIterator.currentQuestion());
             });
         }
     }, [user, quizId]);
