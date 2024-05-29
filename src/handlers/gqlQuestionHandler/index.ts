@@ -1,11 +1,11 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import IGetQuizData from "../IGetQuizData.ts";
-import { QuizItem, QuizInfo } from "../../models/index.ts";
+import { Quiz, QuizInfo } from "../../models/index.ts";
 import quizQueries from "./queires.ts";
 import {API_URL} from "../../config.ts";
 
 const gqlQuestionHandler = (): IGetQuizData  => {
-    let quizItems: QuizItem[] = [];
+    let quizItems: Quiz = [];
     let quizAdminId = '';
     const client = new ApolloClient({
         uri: API_URL,
@@ -17,7 +17,7 @@ const gqlQuestionHandler = (): IGetQuizData  => {
             const result = await client.query({
                 query: quizQueries.GET_QUIZ(quizId),
             });
-            quizItems = JSON.parse(result.data.quiz.quizItems) as QuizItem[];
+            quizItems = JSON.parse(result.data.quiz.quizItems) as Quiz;
             quizAdminId = result.data.quiz.adminId;
         } catch (error) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment

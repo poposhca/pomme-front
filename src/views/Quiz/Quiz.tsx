@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import { useParams } from "react-router-dom";
 import QuizComponentSelector from "./QuizComponentSelector.tsx";
+import QuizController from "../../components/QuizConteroller";
 import { useUserProfile } from '../../hooks/useUserProfile.ts';
-import quizIterator from "../../utils/QuizIterator.ts";
+import quizIterator from "../../utils/QuizBlockIterator.ts";
 import QuizItem from "../../models/QuizItem.ts";
 import IQuizIterator from "../../models/IQuizIterator.ts";
 import IQuizInteractionHandler from "../../models/IQuizInteractionHandler.ts";
 import handlers from "../../handlers";
+import Box from "@mui/material/Box";
 
 const Quiz = () => {
     const { quizId } = useParams<{ quizId: string }>();
@@ -29,11 +30,18 @@ const Quiz = () => {
         serverHandler?.setQuizPosition(quiz?.getCurrent());
     }
 
+    const setRetryQuestion = () => {
+        const retryQuestion = quiz?.resetBlock();
+        setQuestion(retryQuestion);
+        serverHandler?.setQuizPosition(quiz?.getCurrent());
+    }
+
     useEffect(() => {
         if (user && quizId) {
             handlers.questionHandler.getQuiz({quizId}).then((newQuiz) => {
                 const newIterator = quizIterator(newQuiz);
                 setQuiz(newIterator);
+                setQuestion(newIterator.currentQuestion());
             });
         }
     }, [user, quizId]);
@@ -73,24 +81,31 @@ const Quiz = () => {
         >
             {quiz && question && serverHandler ? (
             <>
-                <Grid item xs={12}>
-                    <QuizComponentSelector quizItem={question} userRole={user?.role} serverHandler={serverHandler} />
+                <Grid item xs={6}>
+                    <Box
+                        sx={{
+                            height: '80vh',
+                        }}
+                    >
+                        <QuizComponentSelector quizItem={question} userRole={user?.role} serverHandler={serverHandler} />
+                    </Box>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={6}>
+                    <Box
+                        sx={{
+                            height: '10vh',
+                        }}
+                    >
                     {user?.role === 'admin' && (
-                        <Grid container justifyContent={"space-between"}>
-                            <Grid item md={1}>
-                                {quiz.getCurrent() !== 0 && (
-                                    <Button variant="outlined" onClick={setPreviewsQuestion}>Back</Button>
-                                )}
-                            </Grid>
-                            <Grid item md={1}>
-                                {quiz.getCurrent() !== quiz.getLength() - 1 && (
-                                    <Button variant="outlined" onClick={setNextQuestion}>Next</Button>
-                                )}
-                            </Grid>
-                        </Grid>
+                        <QuizController
+                            currentPosition={quiz.getCurrent()}
+                            quizLength={quiz.getLength()}
+                            setPreviewsQuestion={setPreviewsQuestion}
+                            setNextQuestion={setNextQuestion}
+                            setRetry={setRetryQuestion}
+                        />
                     )}
+                    </Box>
                 </Grid>
             </>
             ): (

@@ -1,8 +1,5 @@
-import QuizItem from "./QuizItem.ts";
+import QuizBlock from "./QuizBlock.ts";
 
-type IGetQuizData = {
-    adminId: string;
-    items: QuizItem[];
-}
+type Quiz = QuizBlock[];
 
-export default IGetQuizData;
+export default Quiz;
