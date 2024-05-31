@@ -1,0 +1,22 @@
+version: '3'
+services:
+  pomme-api:
+    image: poposhca/pomme-api:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_USER=default
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=password
+      - PORT=3000
+      - CORS_ORIGIN=https://curly-goggles-975rjqjw77x2xj9v-5173.app.github.dev
+      - CORS_METHODS=*
+  redis:
+    image: "redis:latest"
+    environment:
+      - REDIS_USER=default
+      - REDIS_PASSWORD=password
+      - REDIS_PORT=6379
